@@ -5,7 +5,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 \
 RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY pyproject.toml ./
-RUN mkdir -p app evals && touch app/__init__.py evals/__init__.py && pip install ".[embeddings]" && pip uninstall -y threadline
+RUN pip install --no-cache-dir --upgrade "setuptools>=83" && mkdir -p app evals && touch app/__init__.py evals/__init__.py && pip install ".[embeddings]" && pip uninstall -y threadline
 COPY . .
 RUN pip install --no-deps . \
     # bake the local embedding model into the image so first start works offline
