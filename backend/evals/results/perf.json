@@ -1,0 +1,135 @@
+{
+ "generated_at": "2026-10-14T20:09:59.783910+00:00",
+ "machine": {
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "cpu_count": 12,
+  "python": "3.11.15"
+ },
+ "embedding": {
+  "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+  "texts": 512,
+  "seconds": 1.53,
+  "texts_per_second": 334.4
+ },
+ "pipeline": {
+  "emails": 1000,
+  "store_seconds": 1.39,
+  "process_seconds": 60.33,
+  "end_to_end_items_per_second": 16.2,
+  "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+  "commitments_extracted": 846
+ },
+ "scale": [
+  {
+   "objects": 1000,
+   "bulk_load_seconds": 1.1,
+   "latency": {
+    "vector_search": {
+     "p50_ms": 6.4,
+     "p95_ms": 27.73,
+     "mean_ms": 7.54
+    },
+    "keyword_search": {
+     "p50_ms": 2.95,
+     "p95_ms": 7.18,
+     "mean_ms": 3.16
+    },
+    "hybrid_search": {
+     "p50_ms": 14.24,
+     "p95_ms": 59.35,
+     "mean_ms": 16.58
+    },
+    "graph_neighbourhood": {
+     "p50_ms": 3.07,
+     "p95_ms": 32.06,
+     "mean_ms": 4.67
+    },
+    "dashboard_briefing": {
+     "p50_ms": 2.92,
+     "p95_ms": 6.87,
+     "mean_ms": 3.35
+    },
+    "assistant_extractive": {
+     "p50_ms": 10.03,
+     "p95_ms": 17.26,
+     "mean_ms": 11.72
+    }
+   },
+   "explain_vector_uses_hnsw": false
+  },
+  {
+   "objects": 10000,
+   "bulk_load_seconds": 17.2,
+   "latency": {
+    "vector_search": {
+     "p50_ms": 32.18,
+     "p95_ms": 52.09,
+     "mean_ms": 33.07
+    },
+    "keyword_search": {
+     "p50_ms": 6.48,
+     "p95_ms": 16.98,
+     "mean_ms": 6.94
+    },
+    "hybrid_search": {
+     "p50_ms": 47.39,
+     "p95_ms": 211.71,
+     "mean_ms": 56.86
+    },
+    "graph_neighbourhood": {
+     "p50_ms": 3.75,
+     "p95_ms": 36.54,
+     "mean_ms": 5.39
+    },
+    "dashboard_briefing": {
+     "p50_ms": 3.04,
+     "p95_ms": 3.99,
+     "mean_ms": 3.12
+    },
+    "assistant_extractive": {
+     "p50_ms": 14.71,
+     "p95_ms": 23.56,
+     "mean_ms": 16.31
+    }
+   },
+   "explain_vector_uses_hnsw": true
+  },
+  {
+   "objects": 100000,
+   "bulk_load_seconds": 232.4,
+   "latency": {
+    "vector_search": {
+     "p50_ms": 6.08,
+     "p95_ms": 33.43,
+     "mean_ms": 7.56
+    },
+    "keyword_search": {
+     "p50_ms": 23.88,
+     "p95_ms": 32.94,
+     "mean_ms": 22.69
+    },
+    "hybrid_search": {
+     "p50_ms": 55.08,
+     "p95_ms": 213.31,
+     "mean_ms": 67.2
+    },
+    "graph_neighbourhood": {
+     "p50_ms": 6.98,
+     "p95_ms": 8.73,
+     "mean_ms": 7.09
+    },
+    "dashboard_briefing": {
+     "p50_ms": 2.85,
+     "p95_ms": 3.58,
+     "mean_ms": 2.89
+    },
+    "assistant_extractive": {
+     "p50_ms": 22.04,
+     "p95_ms": 27.81,
+     "mean_ms": 23.07
+    }
+   },
+   "explain_vector_uses_hnsw": true
+  }
+ ]
+}

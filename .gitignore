@@ -1,0 +1,17 @@
+.env
+*.env.local
+backend/.venv/
+backend/var/
+**/__pycache__/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+frontend/node_modules/
+frontend/.next/
+frontend/test-results/
+frontend/playwright-report/
+frontend/e2e-results.json
+frontend/tsconfig.tsbuildinfo
+backups/
+.DS_Store

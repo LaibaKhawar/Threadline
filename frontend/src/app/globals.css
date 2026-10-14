@@ -1,0 +1,176 @@
+@import 'tailwindcss';
+
+/* ========================================================================== *
+ * Threadline design tokens
+ *
+ * A calm, paper-and-ink workspace. Neutrals are warm (stone), there is one
+ * interactive accent ("lagoon", a deep teal) and a small set of semantic
+ * status colours. Every text pairing was chosen for >= 4.5:1 contrast in both
+ * themes. No gradients, no glow: hierarchy comes from type, spacing and lines.
+ * ========================================================================== */
+
+:root {
+  color-scheme: light;
+  --bg: #f8f7f3;
+  --bg-2: #f2f1ec;
+  --surface: #ffffff;
+  --surface-2: #fbfaf7;
+  --sunken: #f0eee8;
+  --line: #e4e1d9;
+  --line-strong: #d3cfc4;
+
+  --ink: #1c1b18;
+  --ink-2: #4d4a43;
+  --ink-3: #7a766c;
+  --ink-inverse: #ffffff;
+
+  --accent: #1f6b66;
+  --accent-strong: #165450;
+  --accent-wash: rgb(31 107 102 / 0.08);
+  --accent-ring: rgb(31 107 102 / 0.35);
+  --accent-ink: #ffffff;
+
+  --danger: #b53a2e;
+  --danger-wash: rgb(181 58 46 / 0.09);
+  --warning: #96650f;
+  --warning-wash: rgb(176 120 20 / 0.11);
+  --success: #2c7a4f;
+  --success-wash: rgb(44 122 79 / 0.09);
+  --info: #2f62a8;
+  --info-wash: rgb(47 98 168 / 0.09);
+  --uncertain: #6c4fa8;
+  --uncertain-wash: rgb(108 79 168 / 0.09);
+
+  --shadow-sm: 0 1px 2px rgb(28 27 24 / 0.05);
+  --shadow-md: 0 4px 16px rgb(28 27 24 / 0.08);
+  --highlight: rgb(255 214 102 / 0.45);
+}
+
+:root[class~='dark'] {
+  color-scheme: dark;
+  --bg: #121211;
+  --bg-2: #161615;
+  --surface: #1b1b1a;
+  --surface-2: #1f1f1d;
+  --sunken: #151514;
+  --line: #2b2a28;
+  --line-strong: #3a3936;
+
+  --ink: #ecebe6;
+  --ink-2: #b9b6ad;
+  --ink-3: #8f8b81;
+  --ink-inverse: #121211;
+
+  --accent: #6cc0b6;
+  --accent-strong: #8fd3ca;
+  --accent-wash: rgb(108 192 182 / 0.1);
+  --accent-ring: rgb(108 192 182 / 0.4);
+  --accent-ink: #0f2a28;
+
+  --danger: #f0897d;
+  --danger-wash: rgb(240 137 125 / 0.1);
+  --warning: #e5b55c;
+  --warning-wash: rgb(229 181 92 / 0.1);
+  --success: #74c597;
+  --success-wash: rgb(116 197 151 / 0.1);
+  --info: #8ab4ee;
+  --info-wash: rgb(138 180 238 / 0.1);
+  --uncertain: #b9a0ef;
+  --uncertain-wash: rgb(185 160 239 / 0.1);
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
+  --shadow-md: 0 6px 24px rgb(0 0 0 / 0.4);
+  --highlight: rgb(229 181 92 / 0.28);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-sunken: var(--sunken);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-inverse: var(--ink-inverse);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-wash: var(--accent-wash);
+  --color-accent-ink: var(--accent-ink);
+  --color-danger: var(--danger);
+  --color-danger-wash: var(--danger-wash);
+  --color-warning: var(--warning);
+  --color-warning-wash: var(--warning-wash);
+  --color-success: var(--success);
+  --color-success-wash: var(--success-wash);
+  --color-info: var(--info);
+  --color-info-wash: var(--info-wash);
+  --color-uncertain: var(--uncertain);
+  --color-uncertain-wash: var(--uncertain-wash);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif-display), ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+  --shadow-card: var(--shadow-sm);
+  --shadow-pop: var(--shadow-md);
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent-wash);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-ring);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+mark.evidence {
+  background: var(--highlight);
+  color: inherit;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(2px); }
+  to { opacity: 1; transform: none; }
+}
+.animate-fade-in { animation: fade-in 180ms ease-out both; }
+
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--sunken) 0, var(--bg-2) 50%, var(--sunken) 100%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s linear infinite;
+  border-radius: 6px;
+}

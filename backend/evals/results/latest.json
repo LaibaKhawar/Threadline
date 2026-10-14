@@ -1,0 +1,147 @@
+{
+ "generated_at": "2026-10-14T20:09:48.616157+00:00",
+ "config": {
+  "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+  "reasoning_model": null,
+  "llm": false,
+  "started_at": "2026-10-14T20:09:38.522813+00:00"
+ },
+ "results": [
+  {
+   "suite": "retrieval",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": null,
+    "llm": false,
+    "started_at": "2026-10-14T20:09:38.522813+00:00",
+    "variant": "vector"
+   },
+   "metrics": {
+    "recall@5": 0.5907,
+    "recall@10": 0.625,
+    "mrr": 0.7107,
+    "ndcg@10": 0.6178,
+    "paraphrase_recall@5": 0.2333,
+    "paraphrase_mrr": 0.4815,
+    "queries": 34,
+    "latency_ms_p50": 27.7,
+    "latency_ms_max": 87.9
+   },
+   "seconds": 2.1
+  },
+  {
+   "suite": "retrieval",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": null,
+    "llm": false,
+    "started_at": "2026-10-14T20:09:38.522813+00:00",
+    "variant": "keyword"
+   },
+   "metrics": {
+    "recall@5": 0.6814,
+    "recall@10": 0.7157,
+    "mrr": 0.7647,
+    "ndcg@10": 0.6887,
+    "paraphrase_recall@5": 0.3333,
+    "paraphrase_mrr": 0.6,
+    "queries": 34,
+    "latency_ms_p50": 9.8,
+    "latency_ms_max": 60.6
+   },
+   "seconds": 2.1
+  },
+  {
+   "suite": "retrieval",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": null,
+    "llm": false,
+    "started_at": "2026-10-14T20:09:38.522813+00:00",
+    "variant": "graph"
+   },
+   "metrics": {
+    "recall@5": 0.1431,
+    "recall@10": 0.1799,
+    "mrr": 0.2138,
+    "ndcg@10": 0.1597,
+    "paraphrase_recall@5": 0.0,
+    "paraphrase_mrr": 0.0,
+    "queries": 34,
+    "latency_ms_p50": 1.4,
+    "latency_ms_max": 20.6
+   },
+   "seconds": 2.1
+  },
+  {
+   "suite": "retrieval",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": null,
+    "llm": false,
+    "started_at": "2026-10-14T20:09:38.522813+00:00",
+    "variant": "hybrid"
+   },
+   "metrics": {
+    "recall@5": 0.7289,
+    "recall@10": 0.7912,
+    "mrr": 0.8384,
+    "ndcg@10": 0.7519,
+    "paraphrase_recall@5": 0.35,
+    "paraphrase_mrr": 0.5008,
+    "queries": 34,
+    "latency_ms_p50": 10.1,
+    "latency_ms_max": 15.2
+   },
+   "seconds": 2.1
+  },
+  {
+   "suite": "qa",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": null,
+    "llm": false,
+    "started_at": "2026-10-14T20:09:38.522813+00:00",
+    "variant": "extractive"
+   },
+   "metrics": {
+    "factual_accuracy": 0.8889,
+    "citation_accuracy": 0.8889,
+    "invalid_citation_rate": 0.0,
+    "unsupported_claim_rate": 0.0117,
+    "source_relevance": 0.4794,
+    "answers_with_citations": 1.0,
+    "latency_ms_p50": 24,
+    "questions": 18,
+    "answer_modes": {
+     "extractive": 18
+    }
+   },
+   "seconds": 0.4
+  },
+  {
+   "suite": "temporal_qa",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": null,
+    "llm": false,
+    "started_at": "2026-10-14T20:09:38.522813+00:00",
+    "variant": "extractive"
+   },
+   "metrics": {
+    "factual_accuracy": 0.8571,
+    "citation_accuracy": 0.8571,
+    "invalid_citation_rate": 0.0,
+    "unsupported_claim_rate": 0.0,
+    "source_relevance": 0.4826,
+    "answers_with_citations": 1.0,
+    "latency_ms_p50": 9,
+    "questions": 7,
+    "answer_modes": {
+     "extractive": 7
+    }
+   },
+   "seconds": 0.1
+  }
+ ]
+}

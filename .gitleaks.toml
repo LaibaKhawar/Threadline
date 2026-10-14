@@ -1,0 +1,6 @@
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Fake credentials used to test log redaction"
+paths = ['''backend/tests/unit/test_security_core\.py''', '''backend/tests/unit/test_llm_adapters\.py''']

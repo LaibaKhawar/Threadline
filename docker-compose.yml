@@ -1,0 +1,97 @@
+# Threadline: one-command local stack.
+#   cp .env.example .env   (set SECRET_KEY and ENCRYPTION_KEY; see README)
+#   docker compose up --build
+# App: http://localhost:3000   API docs: http://localhost:8000/docs
+# Local models: run Ollama on the host (`ollama serve`) or `docker compose --profile ollama up`.
+name: threadline
+
+x-backend: &backend
+  image: threadline-backend:latest
+  env_file: .env
+  environment:
+    DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-threadline}:${POSTGRES_PASSWORD:-threadline}@postgres:5432/${POSTGRES_DB:-threadline}
+    REDIS_URL: redis://redis:6379/0
+    DATA_DIR: /data
+    EVENTS_EAGER: "false"
+    OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+    AUTH_RATE_LIMIT_PER_MINUTE: ${AUTH_RATE_LIMIT_PER_MINUTE:-10}
+  volumes: [appdata:/data]
+  extra_hosts: ["host.docker.internal:host-gateway"]
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-threadline}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-threadline}
+      POSTGRES_DB: ${POSTGRES_DB:-threadline}
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: [redisdata:/data]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 20
+
+  migrate:
+    <<: *backend
+    build: ./backend
+    command: ["sh", "-c", "alembic upgrade head && python -m scripts.seed_demo --if-missing"]
+    depends_on:
+      postgres: {condition: service_healthy}
+    restart: "no"
+
+  backend:
+    <<: *backend
+    ports: ["127.0.0.1:${API_PORT:-8000}:8000"]   # localhost only; put a TLS proxy in front for remote access
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      redis: {condition: service_healthy}
+
+  worker:
+    <<: *backend
+    command: ["celery", "-A", "app.workers.celery_app", "worker", "-Q", "events,default", "--loglevel=INFO", "--concurrency=2"]
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A app.workers.celery_app inspect ping -d celery@$$HOSTNAME --timeout 10 | grep -q pong"]
+      interval: 30s
+      timeout: 20s
+      retries: 5
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      redis: {condition: service_healthy}
+
+  beat:
+    <<: *backend
+    command: ["celery", "-A", "app.workers.celery_app", "beat", "--loglevel=INFO", "--schedule=/data/celerybeat-schedule"]
+    healthcheck:
+      disable: true
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      redis: {condition: service_healthy}
+
+  frontend:
+    build:
+      context: ./frontend
+      args: {BACKEND_URL: http://backend:8000}
+    ports: ["127.0.0.1:${WEB_PORT:-3000}:3000"]
+    depends_on:
+      backend: {condition: service_healthy}
+
+  ollama:
+    profiles: ["ollama"]
+    image: ollama/ollama:0.12.6
+    volumes: [ollama:/root/.ollama]
+    ports: ["127.0.0.1:11434:11434"]
+
+volumes:
+  pgdata:
+  redisdata:
+  appdata:
+  ollama:

@@ -1,0 +1,636 @@
+{
+ "generated_at": "2026-10-14T20:01:32.693795+00:00",
+ "config": {
+  "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+  "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+  "llm": true,
+  "started_at": "2026-10-14T19:58:54.558454+00:00"
+ },
+ "results": [
+  {
+   "suite": "entity_extraction",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "rules"
+   },
+   "metrics": {
+    "people": {
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0,
+     "tp": 30,
+     "fp": 0,
+     "fn": 0
+    },
+    "organizations": {
+     "precision": 1.0,
+     "recall": 0.7222,
+     "f1": 0.8387,
+     "tp": 13,
+     "fp": 0,
+     "fn": 5
+    },
+    "projects": {
+     "precision": 0.7925,
+     "recall": 1.0,
+     "f1": 0.8842,
+     "tp": 42,
+     "fp": 11,
+     "fn": 0
+    },
+    "dates": {
+     "precision": 0.9756,
+     "recall": 0.9756,
+     "f1": 0.9756,
+     "tp": 40,
+     "fp": 1,
+     "fn": 1
+    },
+    "micro": {
+     "precision": 0.9124,
+     "recall": 0.9542,
+     "f1": 0.9328,
+     "tp": 125,
+     "fp": 12,
+     "fn": 6
+    },
+    "documents": 98
+   },
+   "seconds": 0.1
+  },
+  {
+   "suite": "entity_resolution",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "rules"
+   },
+   "metrics": {
+    "auto": {
+     "precision": 1.0,
+     "recall": 0.8333,
+     "f1": 0.9091,
+     "tp": 30,
+     "fp": 0,
+     "fn": 6
+    },
+    "with_suggested_merges_accepted": {
+     "precision": 1.0,
+     "recall": 0.8611,
+     "f1": 0.9254,
+     "tp": 31,
+     "fp": 0,
+     "fn": 5
+    },
+    "mentions": 32,
+    "unresolved_mentions": 2,
+    "pending_merge_suggestions": 1,
+    "false_merges": 0
+   },
+   "seconds": 0.0
+  },
+  {
+   "suite": "commitment_extraction",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "demo_world_rules"
+   },
+   "metrics": {
+    "detection": {
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0,
+     "tp": 41,
+     "fp": 0,
+     "fn": 0
+    },
+    "actor_accuracy": 1.0,
+    "action_accuracy": 1.0,
+    "deadline_accuracy": 0.9268,
+    "kind_accuracy": 1.0,
+    "gt_commitments": 41
+   },
+   "seconds": 64.4
+  },
+  {
+   "suite": "commitment_extraction",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "heldout_rules"
+   },
+   "metrics": {
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "actionable_detection": {
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0,
+     "tp": 32,
+     "fp": 0,
+     "fn": 0
+    },
+    "per_class": {
+     "commitment": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 17,
+      "fp": 0,
+      "fn": 0
+     },
+     "request": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 9,
+      "fp": 0,
+      "fn": 0
+     },
+     "intention": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0
+     },
+     "completed": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 8,
+      "fp": 0,
+      "fn": 0
+     },
+     "none": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 12,
+      "fp": 0,
+      "fn": 0
+     }
+    },
+    "actor_accuracy": 1.0,
+    "action_accuracy": 1.0,
+    "deadline_accuracy": 1.0,
+    "statements": 52,
+    "seconds": 0.0
+   },
+   "seconds": 64.4
+  },
+  {
+   "suite": "commitment_extraction",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "heldout_llm"
+   },
+   "metrics": {
+    "accuracy": 0.8846,
+    "macro_f1": 0.8831,
+    "actionable_detection": {
+     "precision": 0.9677,
+     "recall": 0.9375,
+     "f1": 0.9524,
+     "tp": 30,
+     "fp": 1,
+     "fn": 2
+    },
+    "per_class": {
+     "commitment": {
+      "precision": 0.875,
+      "recall": 0.8235,
+      "f1": 0.8485,
+      "tp": 14,
+      "fp": 2,
+      "fn": 3
+     },
+     "request": {
+      "precision": 1.0,
+      "recall": 0.8889,
+      "f1": 0.9412,
+      "tp": 8,
+      "fp": 0,
+      "fn": 1
+     },
+     "intention": {
+      "precision": 0.7143,
+      "recall": 0.8333,
+      "f1": 0.7692,
+      "tp": 5,
+      "fp": 2,
+      "fn": 1
+     },
+     "completed": {
+      "precision": 1.0,
+      "recall": 0.875,
+      "f1": 0.9333,
+      "tp": 7,
+      "fp": 0,
+      "fn": 1
+     },
+     "none": {
+      "precision": 0.8571,
+      "recall": 1.0,
+      "f1": 0.9231,
+      "tp": 12,
+      "fp": 2,
+      "fn": 0
+     }
+    },
+    "actor_accuracy": 0.7667,
+    "action_accuracy": 0.8333,
+    "deadline_accuracy": 1.0,
+    "statements": 52,
+    "seconds": 64.1
+   },
+   "seconds": 64.4
+  },
+  {
+   "suite": "commitment_resolution",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "pipeline"
+   },
+   "metrics": {
+    "accuracy_on_extracted": 1.0,
+    "accuracy_end_to_end": 1.0,
+    "per_status_accuracy": {
+     "FULFILLED": 1.0,
+     "OPEN": 1.0,
+     "OVERDUE": 1.0,
+     "CANCELLED": 1.0,
+     "UNCERTAIN": 1.0
+    },
+    "gt_commitments": 41,
+    "extracted": 41
+   },
+   "seconds": 0.0
+  },
+  {
+   "suite": "retrieval",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "vector"
+   },
+   "metrics": {
+    "recall@5": 0.5907,
+    "recall@10": 0.625,
+    "mrr": 0.7107,
+    "ndcg@10": 0.6178,
+    "paraphrase_recall@5": 0.2333,
+    "paraphrase_mrr": 0.4815,
+    "queries": 34,
+    "latency_ms_p50": 10.0,
+    "latency_ms_max": 28.1
+   },
+   "seconds": 1.0
+  },
+  {
+   "suite": "retrieval",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "keyword"
+   },
+   "metrics": {
+    "recall@5": 0.6814,
+    "recall@10": 0.7157,
+    "mrr": 0.7647,
+    "ndcg@10": 0.6887,
+    "paraphrase_recall@5": 0.3333,
+    "paraphrase_mrr": 0.6,
+    "queries": 34,
+    "latency_ms_p50": 3.7,
+    "latency_ms_max": 7.1
+   },
+   "seconds": 1.0
+  },
+  {
+   "suite": "retrieval",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "graph"
+   },
+   "metrics": {
+    "recall@5": 0.1431,
+    "recall@10": 0.1799,
+    "mrr": 0.2138,
+    "ndcg@10": 0.1597,
+    "paraphrase_recall@5": 0.0,
+    "paraphrase_mrr": 0.0,
+    "queries": 34,
+    "latency_ms_p50": 1.4,
+    "latency_ms_max": 22.3
+   },
+   "seconds": 1.0
+  },
+  {
+   "suite": "retrieval",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "hybrid"
+   },
+   "metrics": {
+    "recall@5": 0.7289,
+    "recall@10": 0.7912,
+    "mrr": 0.8384,
+    "ndcg@10": 0.7519,
+    "paraphrase_recall@5": 0.35,
+    "paraphrase_mrr": 0.5008,
+    "queries": 34,
+    "latency_ms_p50": 10.9,
+    "latency_ms_max": 25.5
+   },
+   "seconds": 1.0
+  },
+  {
+   "suite": "qa",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "extractive"
+   },
+   "metrics": {
+    "factual_accuracy": 0.8889,
+    "citation_accuracy": 0.8889,
+    "invalid_citation_rate": 0.0,
+    "unsupported_claim_rate": 0.0117,
+    "source_relevance": 0.4794,
+    "answers_with_citations": 1.0,
+    "latency_ms_p50": 24,
+    "questions": 18,
+    "answer_modes": {
+     "extractive": 18
+    }
+   },
+   "seconds": 64.9
+  },
+  {
+   "suite": "qa",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "llm"
+   },
+   "metrics": {
+    "factual_accuracy": 0.9444,
+    "citation_accuracy": 0.8889,
+    "invalid_citation_rate": 0.1667,
+    "unsupported_claim_rate": 0.0481,
+    "source_relevance": 0.5383,
+    "answers_with_citations": 1.0,
+    "latency_ms_p50": 3044,
+    "questions": 18,
+    "answer_modes": {
+     "llm": 18
+    }
+   },
+   "seconds": 64.9
+  },
+  {
+   "suite": "temporal_qa",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "extractive"
+   },
+   "metrics": {
+    "factual_accuracy": 0.8571,
+    "citation_accuracy": 0.8571,
+    "invalid_citation_rate": 0.0,
+    "unsupported_claim_rate": 0.0,
+    "source_relevance": 0.4826,
+    "answers_with_citations": 1.0,
+    "latency_ms_p50": 10,
+    "questions": 7,
+    "answer_modes": {
+     "extractive": 7
+    }
+   },
+   "seconds": 12.2
+  },
+  {
+   "suite": "temporal_qa",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "llm"
+   },
+   "metrics": {
+    "factual_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "invalid_citation_rate": 0.0,
+    "unsupported_claim_rate": 0.0,
+    "source_relevance": 0.5713,
+    "answers_with_citations": 1.0,
+    "latency_ms_p50": 1971,
+    "questions": 7,
+    "answer_modes": {
+     "llm": 7
+    }
+   },
+   "seconds": 12.2
+  },
+  {
+   "suite": "prompt_injection",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "compromised_model"
+   },
+   "metrics": {
+    "pass_rate": 1.0,
+    "cases": 6,
+    "write_tool_executions": 0,
+    "exfiltration_proposals": 0,
+    "secret_leaks": 0,
+    "action_claims": 0,
+    "indirect_injections_flagged": "3/3",
+    "unsafe_sentences_blocked": 16
+   },
+   "seconds": 8.9
+  },
+  {
+   "suite": "prompt_injection",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "extractive"
+   },
+   "metrics": {
+    "pass_rate": 1.0,
+    "cases": 6,
+    "write_tool_executions": 0,
+    "exfiltration_proposals": 0,
+    "secret_leaks": 0,
+    "action_claims": 0,
+    "indirect_injections_flagged": "3/3",
+    "unsafe_sentences_blocked": 4
+   },
+   "seconds": 8.9
+  },
+  {
+   "suite": "prompt_injection",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "local_llm"
+   },
+   "metrics": {
+    "pass_rate": 1.0,
+    "cases": 6,
+    "write_tool_executions": 0,
+    "exfiltration_proposals": 0,
+    "secret_leaks": 0,
+    "action_claims": 0,
+    "indirect_injections_flagged": "3/3",
+    "unsafe_sentences_blocked": 4
+   },
+   "seconds": 8.9
+  },
+  {
+   "suite": "permissions",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "default"
+   },
+   "metrics": {
+    "pass_rate": 1.0,
+    "checks": 10,
+    "failed": []
+   },
+   "seconds": 0.5
+  },
+  {
+   "suite": "agent_tools",
+   "config": {
+    "embedder": "fastembed:BAAI/bge-small-en-v1.5",
+    "reasoning_model": "qwen3:4b-instruct-2507-q4_K_M",
+    "llm": true,
+    "started_at": "2026-10-14T19:58:54.558454+00:00",
+    "variant": "all_runs"
+   },
+   "metrics": {
+    "tool_success_rate": 1.0,
+    "tool_calls": 120,
+    "runs": 72,
+    "errors": 0,
+    "per_tool": {
+     "detect_followups": {
+      "calls": 3,
+      "success_rate": 1.0,
+      "avg_latency_ms": 7.7,
+      "avg_results": 12.0
+     },
+     "generate_meeting_brief": {
+      "calls": 3,
+      "success_rate": 1.0,
+      "avg_latency_ms": 41.0,
+      "avg_results": 1.0
+     },
+     "get_commitments": {
+      "calls": 8,
+      "success_rate": 1.0,
+      "avg_latency_ms": 19.6,
+      "avg_results": 6.25
+     },
+     "get_decisions": {
+      "calls": 24,
+      "success_rate": 1.0,
+      "avg_latency_ms": 5.0,
+      "avg_results": 1.67
+     },
+     "get_fact_history": {
+      "calls": 12,
+      "success_rate": 1.0,
+      "avg_latency_ms": 8.1,
+      "avg_results": 2.67
+     },
+     "get_person": {
+      "calls": 6,
+      "success_rate": 1.0,
+      "avg_latency_ms": 14.3,
+      "avg_results": 1.0
+     },
+     "get_project": {
+      "calls": 2,
+      "success_rate": 1.0,
+      "avg_latency_ms": 12.5,
+      "avg_results": 1.0
+     },
+     "get_projects_overview": {
+      "calls": 3,
+      "success_rate": 1.0,
+      "avg_latency_ms": 34.0,
+      "avg_results": 3.0
+     },
+     "get_tasks": {
+      "calls": 2,
+      "success_rate": 1.0,
+      "avg_latency_ms": 5.0,
+      "avg_results": 1.0
+     },
+     "get_timeline": {
+      "calls": 4,
+      "success_rate": 1.0,
+      "avg_latency_ms": 18.8,
+      "avg_results": 7.0
+     },
+     "search_memory": {
+      "calls": 53,
+      "success_rate": 1.0,
+      "avg_latency_ms": 13.8,
+      "avg_results": 5.55
+     }
+    }
+   },
+   "seconds": 0.0
+  }
+ ]
+}
