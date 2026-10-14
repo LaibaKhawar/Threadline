@@ -17,7 +17,7 @@ what was not, and what should come next. Numbers come from the files in `backend
 | Agent runtime with tools, approvals, verifier, output guard | Working, tested, evaluated (including injection) |
 | Privacy modes LOCAL / HYBRID / CLOUD, per-source controls, audit log, export, delete | Working, tested. Cloud providers tested with mocked HTTP only; no real cloud key was used |
 | Frontend (dashboard, assistant, search, inbox, calendar, documents, notes, people, projects, commitments, decisions, tasks, timeline, graph, activity, integrations, privacy, settings, evaluation, onboarding, login) | Working; covered by unit and end-to-end tests |
-| Docker compose, CI workflow, backups | Compose stack built and run locally. The CI workflow is written but has not run on GitHub at the time of writing |
+| Docker compose, CI workflow, backups | Compose stack built and run locally. GitHub Actions CI passes (lint, types, tests, audits, secret scan, Docker build) |
 
 ## 2. Architecture
 
@@ -58,6 +58,7 @@ what was not, and what should come next. Numbers come from the files in `backend
 | Frontend Vitest | 13 passed, 0 failed |
 | Playwright end-to-end on the production Docker build | 19 passed, 0 failed |
 | ruff, mypy (0 errors), ESLint, `tsc --noEmit` | clean |
+| GitHub Actions (same checks plus bandit, pip-audit, npm audit, gitleaks, Docker build) | passing |
 
 Details and the history of failures found and fixed are in the [test report](TEST_REPORT.md).
 

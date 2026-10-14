@@ -10,6 +10,7 @@ Final runs on 2026-10-15 against the code in this repository. Nothing below is e
 | Python lint | `ruff check .` | clean |
 | Python types | `mypy app` | 0 errors in 91 files |
 | TypeScript lint / types | `eslint .`, `tsc --noEmit` | clean |
+| GitHub Actions CI | push to `main` | passing: backend, frontend, secrets scan, Docker build |
 
 The end-to-end run used `AUTH_RATE_LIMIT_PER_MINUTE=1000` because the suite signs in many times per minute from one IP;
 the stack was restarted with the default limit (10/min) afterwards.
@@ -59,6 +60,8 @@ palette), offline state, and dark mode.
   MRR differed by 0.1 point (71.0% vs 71.1%), which is floating-point variation between the container and the host.
 * The same run showed the evaluation results could not be written in the container (read-only app directory); results now go to
   `EVAL_RESULTS_DIR` on the data volume.
+* The first CI run failed its dependency audits: Next.js bundles a vulnerable PostCSS, and the CI image had a vulnerable
+  setuptools. PostCSS is now overridden with the patched direct dependency and setuptools is upgraded in CI and the image.
 * The evaluation page displayed counts of 0 or 1 (e.g. "unresolved mentions: 1") as percentages; fixed.
 
 ## Not tested
@@ -67,4 +70,3 @@ palette), offline state, and dark mode.
 * Real cloud LLM providers (only mocked HTTP; no API key was used).
 * Concurrent multi-user load.
 * Browsers other than Chromium.
-* The GitHub Actions workflow had not run on GitHub at the time of writing.
